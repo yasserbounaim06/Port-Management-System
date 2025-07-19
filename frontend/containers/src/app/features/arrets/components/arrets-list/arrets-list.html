@@ -1,0 +1,43 @@
+<div class="arrets-list">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Arrêts List</h2>
+        <a routerLink="/arrets/create" class="btn btn-primary">Add Arrêt</a>
+    </div>
+    <table class="table table-bordered table-hover" *ngIf="arrets.length > 0">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Durée (min)</th>
+                <th>Type Arrêt</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let arret of arrets">
+                <td>{{ arret.id }}</td>
+                <td>{{ arret.description }}</td>
+                <td>{{ arret.duree || 'N/A' }}</td>
+                <td>
+                    <span class="badge" 
+                          [ngClass]="{'bg-danger': arret.type_arret === 'urgence', 
+                                     'bg-warning': arret.type_arret === 'technique', 
+                                     'bg-info': arret.type_arret === 'operationnel'}">
+                        {{ arret.type_arret }}
+                    </span>
+                </td>
+                <td>{{ arret.created_at | date:'short' }}</td>
+                <td>{{ arret.updated_at | date:'short' }}</td>
+                <td>
+                    <a [routerLink]="['/arrets/edit-arret', arret.id]" class="btn btn-success btn-sm me-2">Edit Arrêt</a>
+                    <button (click)="deleteArret(arret.id)" class="btn btn-danger btn-sm me-2">Delete Arrêt</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="arrets?.length === 0">
+        No arrêts found.
+    </div>
+</div>

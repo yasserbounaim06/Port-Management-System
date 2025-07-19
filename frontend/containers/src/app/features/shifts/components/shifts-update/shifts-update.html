@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="shifts-update p-4">
+      <h2>Update Shift</h2>
+      <form [formGroup]="shiftForm" (ngSubmit)="updateShift()">
+        <div class="form-group mb-3">
+          <label for="id">ID</label>
+          <input type="text" id="id" class="form-control" formControlName="id" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" class="form-control" formControlName="nom">
+        </div>
+        <div class="form-group mb-3">
+          <label for="horaire_debut">Horaire Début *</label>
+          <input type="time" id="horaire_debut" class="form-control" formControlName="horaire_debut" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="horaire_fin">Horaire Fin *</label>
+          <input type="time" id="horaire_fin" class="form-control" formControlName="horaire_fin" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="created_at">Created At</label>
+          <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="updated_at">Updated At</label>
+          <input type="text" id="updated_at" class="form-control" formControlName="updated_at" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="shiftForm.invalid">Update Shift</button>
+        <a routerLink="/shifts" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

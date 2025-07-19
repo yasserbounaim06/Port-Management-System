@@ -1,0 +1,147 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="operations-update p-4">
+      <h2>Update Operation</h2>
+      <form [formGroup]="operationForm" (ngSubmit)="updateOperation()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="id">ID</label>
+              <input type="text" id="id" class="form-control" formControlName="id" readonly>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" class="form-control" formControlName="nom" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="type_operation">Type Opération</label>
+              <select id="type_operation" class="form-control" formControlName="type_operation">
+                <option value="">Sélectionner un type</option>
+                <option value="chargement">Chargement</option>
+                <option value="dechargement">Déchargement</option>
+                <option value="transbordement">Transbordement</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="statut">Statut</label>
+              <select id="statut" class="form-control" formControlName="statut">
+                <option value="planifiee">Planifiée</option>
+                <option value="en_cours">En Cours</option>
+                <option value="terminee">Terminée</option>
+                <option value="annulee">Annulée</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="date_debut">Date Début</label>
+              <input type="datetime-local" id="date_debut" class="form-control" formControlName="date_debut">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="date_fin">Date Fin</label>
+              <input type="datetime-local" id="date_fin" class="form-control" formControlName="date_fin">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group mb-3">
+              <label for="id_navire">Navire</label>
+              <select id="id_navire" class="form-control" formControlName="id_navire">
+                <option value="">Sélectionner un navire</option>
+                <option *ngFor="let navire of navires" [value]="navire.matricule_navire">
+                  {{ navire.nom }} ({{ navire.matricule_navire }})
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="containers">Containers</label>
+              <select id="containers" class="form-control" formControlName="containers" multiple size="5">
+                <option *ngFor="let container of containers" [value]="container.id">
+                  {{ container.container_number }} - {{ container.iso_code }}
+                </option>
+              </select>
+              <small class="form-text text-muted">Maintenez Ctrl pour sélectionner plusieurs containers</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="engins">Engins</label>
+              <select id="engins" class="form-control" formControlName="engins" multiple size="5">
+                <option *ngFor="let engin of engins" [value]="engin.matricule_engin">
+                  {{ engin.nom }} ({{ engin.matricule_engin }}) - {{ engin.statut }}
+                </option>
+              </select>
+              <small class="form-text text-muted">Maintenez Ctrl pour sélectionner plusieurs engins</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="shifts">Shifts</label>
+              <select id="shifts" class="form-control" formControlName="shifts" multiple size="5">
+                <option *ngFor="let shift of shifts" [value]="shift.id">
+                  {{ shift.nom }} ({{ shift.id }})
+                </option>
+              </select>
+              <small class="form-text text-muted">Maintenez Ctrl pour sélectionner plusieurs shifts</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="personnels">Personnels</label>
+              <select id="personnels" class="form-control" formControlName="personnels" multiple size="5">
+                <option *ngFor="let personnel of personnels" [value]="personnel.id">
+                  {{ personnel.nom }} {{ personnel.prenom }} - {{ personnel.poste }}
+                </option>
+              </select>
+              <small class="form-text text-muted">Maintenez Ctrl pour sélectionner plusieurs personnels</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="created_at">Created At</label>
+              <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group mb-3">
+              <label for="updated_at">Updated At</label>
+              <input type="text" id="updated_at" class="form-control" formControlName="updated_at" readonly>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <a routerLink="/operations" class="btn btn-secondary me-2">Cancel</a>
+          <button type="submit" class="btn btn-primary" [disabled]="operationForm.invalid">Update Operation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

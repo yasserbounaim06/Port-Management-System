@@ -1,0 +1,36 @@
+<!-- Personnel Create Page -->
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="personnel-create p-4">
+      <h2>Create New Personnel</h2>
+      <form [formGroup]="personnelForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="nom">Nom *</label>
+          <input type="text" id="nom" class="form-control" formControlName="nom" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="prenom">Prénom *</label>
+          <input type="text" id="prenom" class="form-control" formControlName="prenom" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="poste">Poste *</label>
+          <input type="text" id="poste" class="form-control" formControlName="poste" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="id_shift">ID Shift</label>
+          <input type="number" id="id_shift" class="form-control" formControlName="id_shift">
+        </div>
+        <div class="form-group mb-3">
+          <label for="created_at">Created At</label>
+          <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="updated_at">Updated At</label>
+          <input type="text" id="updated_at" class="form-control" formControlName="updated_at" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="personnelForm.invalid">Create Personnel</button>
+        <a routerLink="/personnel" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

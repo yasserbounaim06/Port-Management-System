@@ -1,0 +1,51 @@
+/* Hover effects for interactive cards */
+.hover-card {
+  transition: all 0.3s ease;
+  border-width: 1px;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  border-width: 2px;
+}
+
+/* Stat cards hover effect */
+.card.bg-primary:hover,
+.card.bg-success:hover,
+.card.bg-info:hover,
+.card.bg-warning:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+/* Custom styling for navigation tiles */
+.card-title {
+  font-size: 1.1rem;
+}
+
+.card-text {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fa-3x {
+    font-size: 2rem !important;
+  }
+  
+  .card-body {
+    padding: 1rem !important;
+  }
+}
+
+/* Status indicators */
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+/* Link styling override */
+a.text-decoration-none:hover {
+  text-decoration: none !important;
+}

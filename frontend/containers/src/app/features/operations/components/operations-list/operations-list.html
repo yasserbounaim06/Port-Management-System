@@ -1,0 +1,110 @@
+<div class="operations-list">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Operations List</h2>
+        <!-- Now includes Shifts column -->
+        <a routerLink="/operations/create" class="btn btn-primary">Add Operation</a>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover" *ngIf="operations.length > 0">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Type</th>
+                    <th>Statut</th>
+                    <th>Navire</th>
+                    <th>Date Début</th>
+                    <th>Date Fin</th>
+                    <th>Containers</th>
+                    <th>Engins</th>
+                    <th>Shifts</th>
+                    <th>Personnels</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let operation of operations">
+                    <td>{{ operation.id }}</td>
+                    <td>{{ operation.nom }}</td>
+                    <td>
+                        <span class="badge bg-info" *ngIf="operation.type_operation">
+                            {{ operation.type_operation }}
+                        </span>
+                        <span *ngIf="!operation.type_operation" class="text-muted">N/A</span>
+                    </td>
+                    <td>
+                        <span class="badge" 
+                              [ngClass]="{'bg-secondary': operation.statut === 'planifiee', 
+                                         'bg-primary': operation.statut === 'en_cours', 
+                                         'bg-success': operation.statut === 'terminee',
+                                         'bg-danger': operation.statut === 'annulee'}">
+                            {{ operation.statut }}
+                        </span>
+                    </td>
+                    <td>{{ operation.id_navire !== undefined ? getNavireName(operation.id_navire) : 'N/A' }}</td>
+                    <td>
+                        <span *ngIf="operation.date_debut">
+                            {{ formatDate(operation.date_debut) }}
+                        </span>
+                        <span *ngIf="!operation.date_debut" class="text-muted">Non définie</span>
+                    </td>
+                    <td>
+                        <span *ngIf="operation.date_fin">
+                            {{ formatDate(operation.date_fin) }}
+                        </span>
+                        <span *ngIf="!operation.date_fin" class="text-muted">Non définie</span>
+                    </td>
+                    <td>
+                        <div *ngIf="operation.containers && operation.containers.length > 0">
+                            <span class="badge bg-light text-dark me-1" 
+                                  *ngFor="let containerId of operation.containers">
+                                {{ getContainerNumber(containerId) }}
+                            </span>
+                        </div>
+                        <span *ngIf="!operation.containers || operation.containers.length === 0" 
+                              class="text-muted">Aucun</span>
+                    </td>
+                    <td>
+                        <div *ngIf="operation.engins && operation.engins.length > 0">
+                            <span class="badge bg-secondary me-1" 
+                                  *ngFor="let enginId of operation.engins">
+                                {{ getEnginName(enginId) }}
+                            </span>
+                        </div>
+                        <span *ngIf="!operation.engins || operation.engins.length === 0" 
+                              class="text-muted">Aucun</span>
+                    </td>
+                    <td>
+                        <div *ngIf="operation.shifts && operation.shifts.length > 0">
+                            <span class="badge bg-warning text-dark me-1" *ngFor="let shiftId of operation.shifts">
+                                {{ getShiftName(shiftId) }}
+                            </span>
+                        </div>
+                        <span *ngIf="!operation.shifts || operation.shifts.length === 0" class="text-muted">Aucun</span>
+                    </td>
+                    <td>
+                        <div *ngIf="operation.personnels && operation.personnels.length > 0">
+                            <span class="badge bg-info text-dark me-1" *ngFor="let personnelId of operation.personnels">
+                                {{ getPersonnelName(personnelId) }}
+                            </span>
+                        </div>
+                        <span *ngIf="!operation.personnels || operation.personnels.length === 0" class="text-muted">Aucun</span>
+                    </td>
+                    <td>
+                        <a [routerLink]="['/operations/edit-operation', operation.id]" 
+                           class="btn btn-success btn-sm me-2">Edit</a>
+                        <button (click)="deleteOperation(operation.id)" 
+                                class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div *ngIf="operations?.length === 0" class="text-center py-4">
+        <i class="fas fa-tasks fa-3x text-muted mb-3"></i>
+        <h5 class="text-muted">No operations found</h5>
+        <p class="text-muted">Create your first operation to get started.</p>
+    </div>
+</div>

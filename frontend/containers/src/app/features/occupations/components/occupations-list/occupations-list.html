@@ -1,0 +1,36 @@
+<div class="occupations-list">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Occupations List</h2>
+        <a routerLink="/occupations/create" class="btn btn-primary">Add Occupation</a>
+    </div>
+    <table class="table table-bordered table-hover" *ngIf="occupations.length > 0">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Matricule Engin</th>
+                <th>ID Opération</th>
+                <th>Heure Début</th>
+                <th>Heure Fin</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let occupation of occupations">
+                <td>{{ occupation.id }}</td>
+                <td>{{ occupation.matricule_engin }}</td>
+                <td>{{ occupation.id_operation }}</td>
+                <td>{{ occupation.heure_debut | date:'short' }}</td>
+                <td>{{ occupation.heure_fin | date:'short' }}</td>
+                <td>{{ occupation.created_at | date:'short' }}</td>
+                <td>
+                    <a [routerLink]="['/occupations/edit-occupation', occupation.id]" class="btn btn-success btn-sm me-2">Edit Occupation</a>
+                    <button (click)="deleteOccupation(occupation.id)" class="btn btn-danger btn-sm me-2">Delete Occupation</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="occupations?.length === 0">
+        No occupations found.
+    </div>
+</div>

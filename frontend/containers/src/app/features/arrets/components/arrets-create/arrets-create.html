@@ -1,0 +1,36 @@
+<!-- Arrets Create Page -->
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="arrets-create p-4">
+      <h2>Create New Arrêt</h2>
+      <form [formGroup]="arretForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="description">Description *</label>
+          <textarea id="description" class="form-control" formControlName="description" rows="3" required></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="duree">Durée (minutes)</label>
+          <input type="number" id="duree" class="form-control" formControlName="duree">
+        </div>
+        <div class="form-group mb-3">
+          <label for="type_arret">Type Arrêt</label>
+          <select id="type_arret" class="form-control" formControlName="type_arret">
+            <option value="technique">Technique</option>
+            <option value="operationnel">Opérationnel</option>
+            <option value="urgence">Urgence</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="created_at">Created At</label>
+          <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="updated_at">Updated At</label>
+          <input type="text" id="updated_at" class="form-control" formControlName="updated_at" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="arretForm.invalid">Create Arrêt</button>
+        <a routerLink="/arrets" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="engins-update p-4">
+      <h2>Update Engin</h2>
+      <form [formGroup]="enginForm" (ngSubmit)="updateEngin()">
+        <div class="form-group mb-3">
+          <label for="matricule_engin">Matricule Engin</label>
+          <input type="text" id="matricule_engin" class="form-control" formControlName="matricule_engin" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="nom">Nom *</label>
+          <input type="text" id="nom" class="form-control" formControlName="nom" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="type_engin">Type Engin</label>
+          <input type="text" id="type_engin" class="form-control" formControlName="type_engin">
+        </div>
+        <div class="form-group mb-3">
+          <label for="statut">Statut</label>
+          <select id="statut" class="form-control" formControlName="statut">
+            <option value="disponible">Disponible</option>
+            <option value="en_service">En Service</option>
+            <option value="maintenance">Maintenance</option>
+            <option value="hors_service">Hors Service</option>
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="created_at">Created At</label>
+          <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="updated_at">Updated At</label>
+          <input type="text" id="updated_at" class="form-control" formControlName="updated_at" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="enginForm.invalid">Update Engin</button>
+        <a routerLink="/engins" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

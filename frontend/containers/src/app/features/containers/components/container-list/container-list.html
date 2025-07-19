@@ -1,0 +1,38 @@
+<div class="container-list">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+    <h2 class="mb-0">Container List</h2>
+    <a routerLink="/containers/create" class="btn btn-primary">Add Container</a>
+    </div>
+    <table class="table table-bordered table-hover" *ngIf="containers.length > 0">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Container Number</th>
+                <th>ISO CODE</th>
+                <th>Other Info</th>
+                <th>CREATED AT</th>
+                <th>UPDATED AT</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let container of containers">
+                <td>{{ container.id }}</td>
+                <td>{{ container.container_number }}</td>
+                <td>{{ container.iso_code }}</td>
+                <td>{{ container.other_info }}</td>
+                <td>{{ container.created_at }}</td>
+                <td>{{ container.updated_at }}</td>
+            
+                <td>
+                    <a [routerLink]="['/containers/edit-container', container.id]" class="btn btn-success btn-sm me-2">Edit Container</a>
+                    <button (click)="deleteContainer(container.id)" class="btn btn-danger btn-sm me-2">Delete Container</button>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="containers?.length === 0">
+        No containers found.
+    </div>
+</div>

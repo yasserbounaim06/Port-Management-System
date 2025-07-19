@@ -1,0 +1,33 @@
+/* Custom Port Management Styling */
+.navbar-brand {
+  font-size: 1.4rem;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.25rem;
+}
+
+/* Ensure footer stays at bottom */
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+/* Custom breadcrumb styling */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+}

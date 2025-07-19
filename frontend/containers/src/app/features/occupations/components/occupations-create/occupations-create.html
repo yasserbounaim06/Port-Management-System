@@ -1,0 +1,32 @@
+<!-- Occupations Create Page -->
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="occupations-create p-4">
+      <h2>Create New Occupation</h2>
+      <form [formGroup]="occupationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="matricule_engin">Matricule Engin *</label>
+          <input type="number" id="matricule_engin" class="form-control" formControlName="matricule_engin" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="id_operation">ID Opération *</label>
+          <input type="number" id="id_operation" class="form-control" formControlName="id_operation" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="heure_debut">Heure Début</label>
+          <input type="datetime-local" id="heure_debut" class="form-control" formControlName="heure_debut">
+        </div>
+        <div class="form-group mb-3">
+          <label for="heure_fin">Heure Fin</label>
+          <input type="datetime-local" id="heure_fin" class="form-control" formControlName="heure_fin">
+        </div>
+        <div class="form-group mb-3">
+          <label for="created_at">Created At</label>
+          <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="occupationForm.invalid">Create Occupation</button>
+        <a routerLink="/occupations" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

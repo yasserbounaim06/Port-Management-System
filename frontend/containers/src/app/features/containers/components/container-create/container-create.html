@@ -1,0 +1,35 @@
+<!-- Container Create Page -->
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="container-create p-4">
+      <h2>Create New Container</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="id">ID</label>
+          <input type="text" id="id" class="form-control" formControlName="id" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="container_number">Container Number</label>
+          <input type="text" id="container_number" class="form-control" formControlName="container_number" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="iso_code">ISO Code</label>
+          <input type="text" id="iso_code" class="form-control" formControlName="iso_code" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="other_info">Other Info</label>
+          <input type="text" id="other_info" class="form-control" formControlName="other_info">
+        </div>
+        <div class="form-group mb-3">
+          <label for="created_at">Created At</label>
+          <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+        </div>
+        <div class="form-group mb-3">
+          <label for="updated_at">Updated At</label>
+          <input type="text" id="updated_at" class="form-control" formControlName="updated_at" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Create Container</button>
+      </form>
+    </div>
+  </div>
+</div>

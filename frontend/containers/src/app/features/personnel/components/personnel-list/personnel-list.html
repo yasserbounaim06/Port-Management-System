@@ -1,0 +1,38 @@
+<div class="personnel-list">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Personnel List</h2>
+        <a routerLink="/personnel/create" class="btn btn-primary">Add Personnel</a>
+    </div>
+    <table class="table table-bordered table-hover" *ngIf="personnel.length > 0">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Poste</th>
+                <th>ID Shift</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let person of personnel">
+                <td>{{ person.id }}</td>
+                <td>{{ person.nom }}</td>
+                <td>{{ person.prenom }}</td>
+                <td>{{ person.poste }}</td>
+                <td>{{ person.id_shift || 'Non assigné' }}</td>
+                <td>{{ person.created_at | date:'short' }}</td>
+                <td>{{ person.updated_at | date:'short' }}</td>
+                <td>
+                    <a [routerLink]="['/personnel/edit-personnel', person.id]" class="btn btn-success btn-sm me-2">Edit Personnel</a>
+                    <button (click)="deletePersonnel(person.id)" class="btn btn-danger btn-sm me-2">Delete Personnel</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="personnel?.length === 0">
+        No personnel found.
+    </div>
+</div>

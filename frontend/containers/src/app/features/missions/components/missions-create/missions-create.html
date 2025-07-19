@@ -1,0 +1,28 @@
+<!-- Missions Create Page -->
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="missions-create p-4">
+      <h2>Create New Mission</h2>
+      <form [formGroup]="missionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+          <label for="id_personnel">ID Personnel *</label>
+          <input type="number" id="id_personnel" class="form-control" formControlName="id_personnel" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="id_operation">ID Opération *</label>
+          <input type="number" id="id_operation" class="form-control" formControlName="id_operation" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="role">Rôle</label>
+          <input type="text" id="role" class="form-control" formControlName="role">
+        </div>
+        <div class="form-group mb-3">
+          <label for="created_at">Created At</label>
+          <input type="text" id="created_at" class="form-control" formControlName="created_at" readonly>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="missionForm.invalid">Create Mission</button>
+        <a routerLink="/missions" class="btn btn-secondary ms-2">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>

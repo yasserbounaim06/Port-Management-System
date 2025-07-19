@@ -1,0 +1,103 @@
+<div class="container-fluid py-4">
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="h3 mb-0 fw-bold text-dark">
+        <i class="fas fa-tachometer-alt me-2 text-primary"></i>
+        Port Management Dashboard
+      </h1>
+      <p class="text-muted mb-0">Welcome to your port management control center</p>
+    </div>
+    <div class="text-end">
+      <small class="text-muted">Last updated: {{ getCurrentTime() }}</small>
+    </div>
+  </div>
+
+  <!-- Statistics Cards Row -->
+  <div class="row g-3 mb-4">
+    <div class="col-xl-3 col-md-6" *ngFor="let card of filteredStatCards">
+      <div [class]="'card text-white h-100 ' + card.bg + ' shadow-sm'">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <i [class]="card.icon + ' fa-2x opacity-75'"></i>
+            </div>
+            <div class="flex-grow-1 ms-3">
+              <div class="fw-bold h4 mb-0">{{ card.count }}</div>
+              <div class="h6 mb-0">{{ card.title }}</div>
+              <small class="opacity-75">{{ card.subtitle }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Access Section -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <h4 class="fw-bold mb-3">
+        <i class="fas fa-rocket me-2 text-primary"></i>
+        Quick Access
+      </h4>
+    </div>
+  </div>
+
+  <!-- Navigation Tiles Grid -->
+  <div class="row g-3">
+    <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let tile of filteredNavTiles">
+      <a [routerLink]="tile.route" class="text-decoration-none">
+        <div [class]="'card h-100 border-' + tile.border + ' hover-card'">
+          <div class="card-body text-center py-4">
+            <div [class]="'mb-3 text-' + tile.border">
+              <i [class]="tile.icon + ' fa-3x'"></i>
+            </div>
+            <h6 [class]="'card-title fw-bold text-' + tile.border + ' mb-2'">
+              {{ tile.label }}
+            </h6>
+            <p class="card-text text-muted small mb-0">
+              {{ tile.description }}
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Recent Activity Section (Optional) -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <h4 class="fw-bold mb-3">
+        <i class="fas fa-clock me-2 text-primary"></i>
+        System Status
+      </h4>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 bg-light">
+        <div class="card-body text-center">
+          <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+          <h6 class="fw-bold">All Systems Operational</h6>
+          <small class="text-muted">Last checked: 2 minutes ago</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 bg-light">
+        <div class="card-body text-center">
+          <i class="fas fa-database fa-2x text-info mb-2"></i>
+          <h6 class="fw-bold">Database Connected</h6>
+          <small class="text-muted">Response time: 45ms</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 bg-light">
+        <div class="card-body text-center">
+          <i class="fas fa-wifi fa-2x text-primary mb-2"></i>
+          <h6 class="fw-bold">Network Status</h6>
+          <small class="text-muted">Excellent connection</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
