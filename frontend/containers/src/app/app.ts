@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { AuthService } from './core/services/auth.service';
+import { AuthService, User } from './core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,8 +12,17 @@ import { Router } from '@angular/router';
 })
 export class App {
   protected title = 'Port Manager';
+  user: User | null = null;
+  allowedSections: string[] = [];
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.user = this.authService.getCurrentUserValue();
+    this.allowedSections = this.authService.getAccessibleSections();
+    this.authService.currentUser$.subscribe(user => {
+      this.user = user;
+      this.allowedSections = this.authService.getAccessibleSections();
+    });
+  }
 
   onLogout() {
     this.authService.logout().subscribe({
@@ -24,5 +33,9 @@ export class App {
         this.router.navigate(['/login']);
       }
     });
+  }
+
+  hasSection(section: string): boolean {
+    return this.allowedSections.includes(section);
   }
 }

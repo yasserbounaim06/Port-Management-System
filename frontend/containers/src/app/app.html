@@ -25,63 +25,63 @@
           </li>
 
           <!-- Cargo dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="hasSection('containers') || hasSection('operations')">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="cargoDropdown">
               <i class="fas fa-boxes me-1"></i>Cargo
             </a>
             <ul class="dropdown-menu" aria-labelledby="cargoDropdown">
-              <li><a class="dropdown-item" routerLink="/containers">
+              <li *ngIf="hasSection('containers')"><a class="dropdown-item" routerLink="/containers">
                 <i class="fas fa-box me-2"></i>Containers
               </a></li>
-              <li><a class="dropdown-item" routerLink="/operations">
+              <li *ngIf="hasSection('operations')"><a class="dropdown-item" routerLink="/operations">
                 <i class="fas fa-tasks me-2"></i>Operations
               </a></li>
             </ul>
           </li>
 
           <!-- Fleet dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="hasSection('navires') || hasSection('engins')">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="fleetDropdown">
               <i class="fas fa-ship me-1"></i>Fleet
             </a>
             <ul class="dropdown-menu" aria-labelledby="fleetDropdown">
-              <li><a class="dropdown-item" routerLink="/navires">
+              <li *ngIf="hasSection('navires')"><a class="dropdown-item" routerLink="/navires">
                 <i class="fas fa-ship me-2"></i>Navires
               </a></li>
-              <li><a class="dropdown-item" routerLink="/engins">
+              <li *ngIf="hasSection('engins')"><a class="dropdown-item" routerLink="/engins">
                 <i class="fas fa-cogs me-2"></i>Engins
               </a></li>
             </ul>
           </li>
 
           <!-- Personnel dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="hasSection('personnel') || hasSection('shifts') || hasSection('missions')">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="personnelDropdown">
               <i class="fas fa-users me-1"></i>Personnel
             </a>
             <ul class="dropdown-menu" aria-labelledby="personnelDropdown">
-              <li><a class="dropdown-item" routerLink="/personnel">
+              <li *ngIf="hasSection('personnel')"><a class="dropdown-item" routerLink="/personnel">
                 <i class="fas fa-user me-2"></i>Staff
               </a></li>
-              <li><a class="dropdown-item" routerLink="/shifts">
+              <li *ngIf="hasSection('shifts')"><a class="dropdown-item" routerLink="/shifts">
                 <i class="fas fa-clock me-2"></i>Shifts
               </a></li>
-              <li><a class="dropdown-item" routerLink="/missions">
+              <li *ngIf="hasSection('missions')"><a class="dropdown-item" routerLink="/missions">
                 <i class="fas fa-clipboard-list me-2"></i>Missions
               </a></li>
             </ul>
           </li>
 
           <!-- Operations dropdown -->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="hasSection('arrets') || hasSection('occupations')">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="operationsDropdown">
               <i class="fas fa-tools me-1"></i>Maintenance
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationsDropdown">
-              <li><a class="dropdown-item" routerLink="/arrets">
+              <li *ngIf="hasSection('arrets')"><a class="dropdown-item" routerLink="/arrets">
                 <i class="fas fa-pause-circle me-2"></i>Arrêts
               </a></li>
-              <li><a class="dropdown-item" routerLink="/occupations">
+              <li *ngIf="hasSection('occupations')"><a class="dropdown-item" routerLink="/occupations">
                 <i class="fas fa-calendar-check me-2"></i>Occupations
               </a></li>
             </ul>
