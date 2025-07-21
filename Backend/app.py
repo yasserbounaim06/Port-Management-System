@@ -1112,14 +1112,14 @@ def delete_occupation(occupation_id):
 @app.route('/api/auth/login', methods=['POST'])
 def login():
     data = request.get_json()
-    username = data.get('username')
+    role = data.get('role')
     password = data.get('password')
-    if not username or not password:
-        return jsonify({'error': 'Username and password required'}), 400
+    if not role or not password:
+        return jsonify({'error': 'Role and password required'}), 400
 
-    user = User.query.filter_by(username=username).first()
+    user = User.query.filter_by(role=role).first()
     if not user or not user.check_password(password):
-        return jsonify({'error': 'Invalid username or password'}), 401
+        return jsonify({'error': 'Invalid role or password'}), 401
 
     token = generate_token(user.id, user.role)
     return jsonify({
