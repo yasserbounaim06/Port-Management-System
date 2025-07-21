@@ -16,6 +16,11 @@ export class LoginComponent implements OnInit {
   loading = false;
   error = '';
   returnUrl = '';
+  roles = [
+    { label: 'Admin', value: 'admin' },
+    { label: 'Manager', value: 'manager' },
+    { label: 'Personnel', value: 'personnel' }
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,14 +29,12 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
+      role: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
-    // Removed redirect to dashboard if already logged in
   }
 
   ngOnInit(): void {
-    // Get return url from route parameters or default to dashboard
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
@@ -44,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.error = '';
 
     const credentials: LoginRequest = {
-      username: this.loginForm.value.username,
+      role: this.loginForm.value.role,
       password: this.loginForm.value.password
     };
 
@@ -61,6 +64,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // Convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 }

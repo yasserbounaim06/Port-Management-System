@@ -23,19 +23,15 @@
             <!-- Login Form -->
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="mb-3">
-                <label for="username" class="form-label fw-semibold">
-                  <i class="fas fa-user me-2 text-primary"></i>Username
+                <label for="role" class="form-label fw-semibold">
+                  <i class="fas fa-user-tag me-2 text-primary"></i>Role
                 </label>
-                <input 
-                  type="text" 
-                  id="username"
-                  class="form-control form-control-lg"
-                  [class.is-invalid]="f['username'].invalid && f['username'].touched"
-                  formControlName="username"
-                  placeholder="Enter your username"
-                  autocomplete="username">
-                <div *ngIf="f['username'].invalid && f['username'].touched" class="invalid-feedback">
-                  <small *ngIf="f['username'].errors?.['required']">Username is required</small>
+                <select id="role" class="form-select form-select-lg" formControlName="role">
+                  <option value="" disabled selected>Select your role</option>
+                  <option *ngFor="let r of roles" [value]="r.value">{{ r.label }}</option>
+                </select>
+                <div *ngIf="f['role'].invalid && f['role'].touched" class="invalid-feedback">
+                  <small *ngIf="f['role'].errors?.['required']">Role is required</small>
                 </div>
               </div>
 

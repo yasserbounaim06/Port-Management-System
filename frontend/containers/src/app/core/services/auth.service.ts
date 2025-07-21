@@ -14,7 +14,7 @@ export interface User {
 }
 
 export interface LoginRequest {
-  username: string;
+  role: string;
   password: string;
 }
 
