@@ -2,7 +2,9 @@
 
 A modern full-stack web application for managing port operations, containers, personnel, equipment, and more. Built with **Flask** (Python) for the backend and **Angular** for the frontend.
 
----
+--<img width="1920" height="1080" alt="Screenshot 2025-07-21 094354" src="https://github.com/user-attachments/assets/84aafffe-2237-47d4-90c7-11f4073fb32d" />
+-
+<img width="1832" height="914" alt="Screenshot 2025-07-21 094640" src="https://github.com/user-attachments/assets/d81090be-4a98-43b5-9026-9440b0abc62c" />
 
 ## 🚀 Features
 
