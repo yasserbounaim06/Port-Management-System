@@ -7,7 +7,7 @@ import { Shift } from "../models/shifts.model";
     providedIn: "root"
 })
 export class ShiftsService {
-    private apiUrl = 'http://127.0.0.1:5000/api';
+    private apiUrl = 'https://port-management-system.onrender.com/api';
     
     constructor(private http: HttpClient) {}
 
