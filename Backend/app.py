@@ -27,7 +27,7 @@ CORS(app, origins=['http://localhost:4200'], supports_credentials=True)
 app.config.from_pyfile(os.getenv('FLASK_CONFIG', 'config.py'), silent=True)
 
 # Override with environment variables (recommended for secrets)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI', app.config.get('SQLALCHEMY_DATABASE_URI'))
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', app.config.get('SQLALCHEMY_DATABASE_URI'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
