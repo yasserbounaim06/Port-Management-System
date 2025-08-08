@@ -13,8 +13,9 @@
 ### **Service Configuration:**
 - **Name:** `port-management-backend`
 - **Environment:** `Python 3`
-- **Build Command:** `pip install -r Backend/requirements-deploy.txt`
-- **Start Command:** `cd Backend && python app.py`
+- **Root Directory:** `Backend`
+- **Build Command:** `pip install -r requirements-deploy.txt`
+- **Start Command:** `python app.py`
 
 ## **Step 3: Environment Variables**
 Add these environment variables in Render dashboard:
@@ -47,3 +48,4 @@ FLASK_DEBUG=False
 - If build fails, check the logs for specific errors
 - Ensure all Windows-specific packages are removed from requirements
 - Verify environment variables are set correctly
+- **Important:** Set Root Directory to `Backend` and use `python app.py`

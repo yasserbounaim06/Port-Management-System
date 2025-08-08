@@ -32,6 +32,15 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
+# Try to create tables, but don't fail if database is not available
+try:
+    with app.app_context():
+        db.create_all()
+        print("Database tables created successfully")
+except Exception as e:
+    print(f"Warning: Could not connect to database: {e}")
+    print("App will start without database connection")
+
 # --- Models (Corrected) ---
 class Container(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -132,10 +141,6 @@ class Occupation(db.Model):
     heure_fin = db.Column(db.DateTime)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     
-
-# --- Initialize Database ---
-with app.app_context():
-    db.create_all()
 
 # ========================================
 # CONTAINER ROUTES (Already implemented)
@@ -1139,6 +1144,15 @@ def home():
 @app.route('/health')
 def health():
     return jsonify({"status": "healthy"})
+
+@app.route('/db-health')
+def db_health():
+    try:
+        # Try to execute a simple query
+        db.session.execute('SELECT 1')
+        return jsonify({"status": "healthy", "database": "connected"})
+    except Exception as e:
+        return jsonify({"status": "healthy", "database": "disconnected", "error": str(e)})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
