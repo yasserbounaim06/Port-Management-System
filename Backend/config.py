@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Database configuration - supports MySQL and PostgreSQL
-DATABASE_URL = os.getenv('DATABASE_URL', 'mysql+pymysql://root:yasser@localhost/container_tracker')
+# Database configuration - supports MySQL, PostgreSQL, and SQLite
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///port_management.db')
 
 # Handle Railway's PostgreSQL URL format if needed
 if DATABASE_URL.startswith('postgres://'):
