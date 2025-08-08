@@ -1149,8 +1149,9 @@ def health():
 @app.route('/db-health')
 def db_health():
     try:
-        # Try to execute a simple query
-        db.session.execute('SELECT 1')
+        # Try to execute a simple query using proper SQLAlchemy syntax
+        from sqlalchemy import text
+        db.session.execute(text('SELECT 1'))
         return jsonify({"status": "healthy", "database": "connected"})
     except Exception as e:
         return jsonify({"status": "healthy", "database": "disconnected", "error": str(e)})
