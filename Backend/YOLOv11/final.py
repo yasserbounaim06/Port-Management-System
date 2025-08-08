@@ -33,7 +33,7 @@ def detect_and_crop(model_path, image_path, classes):
     model = YOLO(model_path)
     results = model.predict(
         source=image_path,
-        save=False,
+        save=True,
         save_crop=True,
         classes=classes
     )

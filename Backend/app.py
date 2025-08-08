@@ -1129,4 +1129,4 @@ def login():
     }), 200
 
 if __name__ == '__main__':
-    app.run(debug=os.getenv('FLASK_DEBUG', 'False') == 'True')
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
