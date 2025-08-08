@@ -1128,5 +1128,17 @@ def login():
         'user': user.to_dict()
     }), 200
 
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "Port Management System API",
+        "status": "running",
+        "version": "1.0.0"
+    })
+
+@app.route('/health')
+def health():
+    return jsonify({"status": "healthy"})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
